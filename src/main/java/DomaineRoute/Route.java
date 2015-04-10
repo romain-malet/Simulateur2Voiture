@@ -1,5 +1,7 @@
 package DomaineRoute;
 
+import java.util.Observable;
+
 /**
  * Created by 21408607 on 27/03/2015.
  */
@@ -32,5 +34,7 @@ public class Route {
     public int getLongueur() {
         return longueur;
     }
+
+    
 
 }
