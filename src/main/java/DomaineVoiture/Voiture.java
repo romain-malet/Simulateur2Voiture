@@ -1,5 +1,7 @@
 package DomaineVoiture;
 
+import AppliSimu.Direction;
+
 import java.util.Observable;
 
 public class Voiture extends Observable {
@@ -8,12 +10,14 @@ public class Voiture extends Observable {
 	private int y;
 	private int vitesseMetreSeconde;
 	private int directionEnDegres;
+    private Direction dir;
 
 	public Voiture(int x, int y, int vitesse) {
 		this.x = x;
 		this.y = y;
 		this.vitesseMetreSeconde = vitesse;
 		this.directionEnDegres = 0;
+        this.dir = Direction.DROIT;
 	}
 
 	public void miseAJourPosition() {
@@ -26,7 +30,7 @@ public class Voiture extends Observable {
 			x += vitesseMetreSeconde;
 		else
 			x -= vitesseMetreSeconde;
-		
+
 		if (x > 1000)
 			x = 1000;
 		else if (x < 0)
@@ -70,5 +74,68 @@ public class Voiture extends Observable {
 	return directionEnDegres;
 	}
 
+    public void allerEnHaut() {
+        switch(dir) {
+            case BAS:
+                directionEnDegres += 180 ;
+                break;
+            case DROIT:
+                directionEnDegres += 90 ;
+                break;
+            case GAUCHE:
+                directionEnDegres += 90 ;
+                break;
+        }
+        dir = Direction.HAUT;
+        directionEnDegres = directionEnDegres % 360;
+    }
+
+    public void allerEnBas(){
+        switch(dir) {
+            case HAUT:
+                directionEnDegres -= 180 ;
+                break;
+            case DROIT:
+                directionEnDegres += 90 ;
+                break;
+            case GAUCHE:
+                directionEnDegres += 90 ;
+                break;
+        }
+        dir = Direction.BAS;
+        directionEnDegres = directionEnDegres % 360;
+    }
+
+    public void allerAdroite() {
+        switch(dir) {
+            case HAUT:
+                directionEnDegres += 90 ;
+                break;
+            case BAS:
+                directionEnDegres += 90 ;
+                break;
+            case GAUCHE:
+                directionEnDegres += 180 ;
+                break;
+        }
+        dir = Direction.DROIT;
+        directionEnDegres = directionEnDegres % 360;
+    }
+
+    public void allerAGauche() {
+        switch(dir) {
+            case HAUT:
+                directionEnDegres += 90 ;
+                break;
+            case BAS:
+                directionEnDegres += 90 ;
+                break;
+            case DROIT:
+                directionEnDegres += 180 ;
+                break;
+        }
+        dir = Direction.GAUCHE;
+        directionEnDegres = directionEnDegres % 360;
+    }
 	
 }

@@ -13,7 +13,10 @@ import DomaineVoiture.Voiture;
 public class CommandeVoiture extends JPanel implements ActionListener{
 	
 	private JButton boutonAccelerer;
-	private JButton boutonInverserDirection;
+	private JButton boutonGauche;
+    private JButton boutonDroite;
+    private JButton boutonHaut;
+    private JButton boutonBas;
 	private Voiture maVoiture;
 	
 	
@@ -26,10 +29,23 @@ public class CommandeVoiture extends JPanel implements ActionListener{
 		boutonAccelerer.addActionListener(this);
 		this.add(boutonAccelerer);
 
-		boutonInverserDirection = new JButton("Changer direction");
-		boutonInverserDirection.addActionListener(this);
-		this.add(boutonInverserDirection);
-		
+        boutonGauche = new JButton("Inverser");
+        boutonGauche.addActionListener(this);
+		this.add(boutonGauche);
+/*
+        boutonDroite = new JButton("Droite");
+        boutonDroite.addActionListener(this);
+        this.add(boutonDroite);
+
+        boutonHaut = new JButton("haut");
+        boutonHaut.addActionListener(this);
+        this.add(boutonHaut);
+
+
+        boutonBas = new JButton("bas");
+        boutonBas.addActionListener(this);
+        this.add(boutonBas);*/
+
 		fenetre.add(this);
 		this.maVoiture = maVoiture;
 	}
@@ -40,8 +56,16 @@ public class CommandeVoiture extends JPanel implements ActionListener{
 		Object bouton = event.getSource();
 		if (bouton == boutonAccelerer)
 			maVoiture.accelerer();
-		else
-			maVoiture.inverserDirection();
+		else if(bouton == boutonDroite) {
+            maVoiture.allerAdroite();
+        }else if(bouton == boutonGauche) {
+            maVoiture.inverserDirection();
+        }  else if(bouton == boutonHaut){
+            maVoiture.allerEnHaut();
+        } else if(bouton == boutonBas){
+          maVoiture.allerEnBas();
+        }
+
 	}
 	
 

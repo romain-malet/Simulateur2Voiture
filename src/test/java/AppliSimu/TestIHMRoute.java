@@ -15,7 +15,7 @@ public class TestIHMRoute extends TestCase {
         Route route = new Route(100, 300, 10, 500);
         IHMRoute ihmRoute = new IHMRoute(route);
 
-        Point[] coordonneesIhmRoute = ihmRoute.coordonneesRoute(route, 0.5);
+        Point[] coordonneesIhmRoute = ihmRoute.coordonneesRoute(0.5);
 
         Point[] coordonneesAttendues = new Point[4];
         coordonneesAttendues[0] = new Point(50, 145);
